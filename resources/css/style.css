@@ -1,0 +1,18 @@
+/* header h1 {
+  display: inline-block;
+} */
+
+html {
+  font-size: 16px;
+}
+
+header h1,
+input,
+button {
+  margin-top: 0;
+  margin-bottom: 0;
+}
+
+.glyphicon.glyphicon-search {
+    font-size: 18px;
+}
