@@ -1,22 +1,26 @@
-/* header h1 {
-  display: inline-block;
-} */
+html, body {
+  height: 100%;
+}
+
+html, body {
+  height: 100%;
+}
 
 html {
   font-size: 16px;
 }
 
 header {
-  padding: 2.5rem 0;
+  padding: 2rem 0;
   background-color: rgb(35, 2, 63);
 }
 
 header h1,
-input,
-button {
+header input,
+header i {
   margin-top: 0;
   margin-bottom: 0;
-  display: inline-block;
+  /* display: inline; */
 }
 
 header h1 {
