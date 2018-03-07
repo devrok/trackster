@@ -28,6 +28,9 @@ header i {
   text-align: center;
   background-color: rgb(255, 102, 204);
 }
+header i:hover {
+  cursor: pointer;
+}
 
 header i,
   input {
