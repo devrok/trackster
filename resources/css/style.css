@@ -1,9 +1,9 @@
-html, body {
-  height: 100%;
-}
-
 html {
   font-size: 16px;
+}
+
+html, body {
+  height: 100%;
 }
 
 header {
@@ -12,11 +12,10 @@ header {
 }
 
 header h1,
-header input,
-header i {
+  input,
+  i {
   margin-top: 0;
   margin-bottom: 0;
-  /* display: inline; */
 }
 
 header h1 {
@@ -27,6 +26,14 @@ header h1 {
 
 header i {
   text-align: center;
-  border-radius: 12px;
   background-color: rgb(255, 102, 204);
+}
+
+header i,
+  input {
+  border-radius: 12px;
+}
+
+header input::placeholder {
+  color: rgb(191, 191, 191);
 }
