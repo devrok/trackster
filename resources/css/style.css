@@ -1,3 +1,4 @@
+/* general styles */
 html {
   font-size: 16px;
 }
@@ -5,7 +6,7 @@ html {
 html, body {
   height: 100%;
 }
-
+/* header styling */
 header {
   padding: 2rem 0;
   background-color: rgb(35, 2, 63);
@@ -33,15 +34,19 @@ header i:hover {
   cursor: pointer;
   background-color: rgb(255, 0, 171);
 }
-/* header i:focus {
-  outline: none;
-} */
 
 header i,
   input {
   border-radius: 12px;
 }
-
+header input {
+  color: rgb(74, 74, 74);
+}
 header input::placeholder {
   color: rgb(191, 191, 191);
+}
+/* result styling */
+#result-header {
+  color: rgb(255, 255, 255);
+  background-color: rgb(104, 0, 255);
 }
