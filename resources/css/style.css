@@ -27,10 +27,15 @@ header h1 {
 header i {
   text-align: center;
   background-color: rgb(255, 102, 204);
+  margin: 0 0.25rem;
 }
 header i:hover {
   cursor: pointer;
+  background-color: rgb(255, 0, 171);
 }
+/* header i:focus {
+  outline: none;
+} */
 
 header i,
   input {
