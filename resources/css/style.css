@@ -50,3 +50,30 @@ header input::placeholder {
   color: rgb(255, 255, 255);
   background-color: rgb(104, 0, 255);
 }
+/* helper style to identify issues */
+/* #result-header span {
+  background-color: lightseagreen;
+  border-left: 1px solid black;
+} */
+
+.result-container-row {
+  padding: 0.25rem 0;
+  font-size: 0.875rem;
+  border-bottom: 1px solid rgb(204, 204, 204);
+}
+.result-container-row:hover {
+  background-color: rgb(239, 237, 242);
+}
+/* helper style to identify issues */
+/* .result-container-row i, span {
+  background-color: lightseagreen;
+  border-left: 1px solid black;
+} */
+
+.result-container-row .fa {
+  color: rgb(255, 0, 171);
+}
+.result-container-row .fa:hover {
+  cursor: pointer;
+  color: rgb(255, 102, 204);
+}
