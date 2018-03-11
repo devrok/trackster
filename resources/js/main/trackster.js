@@ -4,6 +4,10 @@ $(document).ready(function() {
     getInputAndSearchTracksByTitle();
   });
 
+  $("#header-no").click(function() {
+    sortByNumber();
+  });
+
   $("#search-box").keydown(function(e) {
     if ((e.which || e.keyCode) == 13) {
       getInputAndSearchTracksByTitle();
@@ -30,32 +34,13 @@ Trackster.renderTracks = function(tracks) {
   var trackArray = getTrackArray(tracks);
 
   for (var i = 0; i < trackArray.length; i++) {
-    var trackItem = trackArray[i];
-    var number = i;
-    var trackUrl = trackItem.url;
-    var trackName = trackItem.name;
-    var artist = trackItem.artist;
-    var albumArt = getAlbumArtSource(trackItem.image);
-    var listener = numeral(trackItem.listeners);
-    var length = "n/A";
+    $("#title-text").toggleClass("newColor");
 
-    var trackRow = "<tr>"
-    + "  <td></td>"
-    + "  <td>"
-    + "    <a href=\"" + trackUrl + "\">"
-    + "      <i class=\"fa fa-play-circle-o fa-lg\"></i>"
-    + "    </a>"
-    + "  </td>"
-    + "  <td scope=\"row\">" + number + "</td>"
-    + "  <td>" + trackName + "</td>"
-    + "  <td>" + artist + "</td>"
-    + "  <td><img src=\"" + albumArt +"\" /></td>"
-    + "  <td>" + listener.format("0,0") + "</td>"
-    + "  <td></td>"
-    + "</tr>";
-
+    var trackRow = createTrackRow(trackArray[i], i);
     $("#result-rows").append(trackRow);
+
   }
+  $("#title-text").removeClass("newColor");
 
 };
 
@@ -79,6 +64,38 @@ function getAlbumArtSource(imageArray) {
   }
 
   return "";
+};
+
+function createTrackRow(trackItem, i) {
+  var number = i + 1;
+  var trackUrl = trackItem.url;
+  var trackName = trackItem.name;
+  var artist = trackItem.artist;
+  var albumArt = getAlbumArtSource(trackItem.image);
+  var listener = numeral(trackItem.listeners);
+  var length = "n/A";
+
+  return "<tr>"
+  + "  <td></td>"
+  + "  <td>"
+  + "    <a href=\"" + trackUrl + "\">"
+  + "      <i class=\"fa fa-play-circle-o fa-lg\"></i>"
+  + "    </a>"
+  + "  </td>"
+  + "  <td scope=\"row\" id=\"field-no\">" + number + "</td>"
+  + "  <td>" + trackName + "</td>"
+  + "  <td>" + artist + "</td>"
+  + "  <td><img src=\"" + albumArt +"\" /></td>"
+  + "  <td>" + listener.format("0,0") + "</td>"
+  + "  <td></td>"
+  + "</tr>";
+};
+
+function sortByNumber(){
+  // keine Ahnung
+  var d = $("#result-rows").find("td#field-no");
+  // var allDataRows = $("#result-rows").data("result-rows");
+  // console.log(allDataRows.count);
 };
 
 /*

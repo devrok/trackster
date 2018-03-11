@@ -25,6 +25,13 @@ header h1 {
   color: rgb(255, 0, 171);
 }
 
+.defaultColor {
+  color: rgb(255, 0, 171);
+}
+.newColor {
+  color: rgb(255, 255, 255);
+}
+
 header i {
   text-align: center;
   background-color: rgb(255, 102, 204);
@@ -45,10 +52,18 @@ header input {
 header input::placeholder {
   color: rgb(191, 191, 191);
 }
+input:focus {
+  outline: none;
+}
+
 /* result styling */
 #result-header {
   color: rgb(255, 255, 255);
   background-color: rgb(104, 0, 255);
+}
+
+#header-no:hover {
+  cursor: pointer;
 }
 
 .container-fluid {
