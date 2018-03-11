@@ -25,36 +25,36 @@ var Trackster = {};
   Append each "row" to the container in the body to display all tracks.
 */
 Trackster.renderTracks = function(tracks) {
-
-  $("#result-container").empty();
+  $("#result-rows").empty();
 
   var trackArray = getTrackArray(tracks);
 
   for (var i = 0; i < trackArray.length; i++) {
     var trackItem = trackArray[i];
-
     var number = i;
     var trackUrl = trackItem.url;
     var trackName = trackItem.name;
     var artist = trackItem.artist;
     var albumArt = getAlbumArtSource(trackItem.image);
-    // TODO: STRING FORMAT NOT WORKING
     var listener = numeral(trackItem.listeners);
     var length = "n/A";
 
-    var trackRow = "<div class=\"row result-container-row align-items-center\">"
-    + "  <a class=\"col-md-auto offset-md-1\" href=\"" + trackUrl + "\">"
-    + "    <i class=\"col-md-auto offset-md-1 fa fa-play-circle-o fa-lg\"></i>"
-    + "  </a>"
-    + "  <span class=\"col-md-auto\">" + number +"</span>"
-    + "  <span class=\"col-md-3\">" + trackName +"</span>"
-    + "  <span class=\"col-md-2\">" + artist + "</span>"
-    + "  <img class=\"col-md-1\" src=\"" + albumArt +"\" />"
-    + "  <span class=\"col-md-1\">" + listener.format("0,0") +"</span>"
-    + "  <span class=\"col-md-1\">" + length +"</span>"
-    + "</div>";
+    var trackRow = "<tr>"
+    + "  <td></td>"
+    + "  <td>"
+    + "    <a href=\"" + trackUrl + "\">"
+    + "      <i class=\"fa fa-play-circle-o fa-lg\"></i>"
+    + "    </a>"
+    + "  </td>"
+    + "  <td scope=\"row\">" + number + "</td>"
+    + "  <td>" + trackName + "</td>"
+    + "  <td>" + artist + "</td>"
+    + "  <td><img src=\"" + albumArt +"\" /></td>"
+    + "  <td>" + listener.format("0,0") + "</td>"
+    + "  <td></td>"
+    + "</tr>";
 
-    $("#result-container").append(trackRow);
+    $("#result-rows").append(trackRow);
   }
 
 };

@@ -28,7 +28,7 @@
     <!-- header section contains logo, search text box and search button  -->
     <header class="container-fluid">
       <div class="row align-items-center">
-        <h1 class="col-md-7 offset-md-1">trackster</h1>
+        <h1 class="col-md-7 offset-md-1" id="title-text">trackster</h1>
         <input class="col-md-2" type="search" placeholder="watcha lookin' for" id="search-box"/>
         <i class="col-md-1 fa fa-search fa-2x" id="search-btn"></i>
       </div>
@@ -36,36 +36,39 @@
 
     <!-- main content contains the search result but is empty on startup -->
     <main class="container-fluid">
-      <!-- result header -->
-      <div class="row" id="result-header">
-        <span class="col-md-auto offset-md-1"></span>
-        <span class="col-md-auto">#</span>
-        <span class="col-md-3">Song</span>
-        <span class="col-md-2">Artist</span>
-        <span class="col-md-1">Album Art</span>
-        <span class="col-md-1">Listeners</span>
-        <span class="col">#</span>
-        <!-- <span class="col-md-1">Length</span> -->
-      </div>
-      <!-- the returend tracks  -->
-      <!-- TODO: wirklich notwendig? also dieses extra row div -->
-      <div class="row">
-        <div class="container-fluid" id="result-container">
+      <table class="table">
+        <!-- result header -->
+        <thead id="result-header">
+          <tr>
+            <th scope="col"></th> <!-- margin column -->
+            <th scope="col"></th>
+            <th scope="col">#</th>
+            <th scope="col">Song</th>
+            <th scope="col">Artist</th>
+            <th scope="col">Album Art</th>
+            <th scope="col">Listeners</th>
+            <th scope="col"></th> <!-- margin column -->
+          </tr>
+        </thead>
+        <!-- the returend tracks  -->
+        <tbody id="result-rows">
           <!-- mock row -->
-          <div class="row result-container-row align-items-center">
-            <a class="col-md-auto offset-md-1" href="#">
-              <i class="fa fa-play-circle-o fa-lg"></i>
-            </a>
-            <span class="col-md-auto">1</span>
-            <span class="col-md-3">Fairytale in the Supermarket</span>
-            <span class="col-md-2">The Raincoats</span>
-            <span class="col-md-1">album art</span>
-            <span class="col-md-1">101,839</span>
-            <span class="col">#</span>
-            <!-- <span class="col-md-1">3:01</span> -->
-          </div>
-        </div>
-      </div>
+          <!-- <tr id>
+            <td></td>
+            <td>
+              <a href="#">
+                <i class="fa fa-play-circle-o fa-lg"></i>
+              </a>
+            </td>
+            <td scope="row">1</td>
+            <td>Fairytale in the Supermarket</td>
+            <td>The Raincoats</td>
+            <td>album art</td>
+            <td>101,839</td>
+            <td></td>
+          </tr> -->
+        </tbody>
+      </table>
     </main>
 
   </body>
