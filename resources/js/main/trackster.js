@@ -1,16 +1,23 @@
 $(document).ready(function() {
-
   // clicking the search button
   $("#search-btn").click(function() {
-
-    var input = $("header input").val();
-
-    Trackster.searchTracksByTitle(input);
+    getInputAndSearchTracksByTitle();
   });
-
-
-
 });
+
+// TODO: KEYPRESS NOT WORKING
+$(document).on( 'pageinit',function(event){
+  $("#search-box").keydown(function(e) {
+    if ((e.which || e.keyCode) == 13) {
+      getInputAndSearchTracksByTitle();
+    }
+  });
+});
+
+function getInputAndSearchTracksByTitle() {
+  var input = $("header input").val();
+  Trackster.searchTracksByTitle(input);
+};
 
 const API_KEY ="903d0083304a4f424f3ff649aef0380f";
 
@@ -34,11 +41,8 @@ Trackster.renderTracks = function(tracks) {
     var trackName = trackItem.name;
     var artist = trackItem.artist;
     var albumArt = getAlbumArtSource(trackItem.image);
-    // if (trackItem.image !== null && trackItem.image.length > 1) {
-    //     albumArt = trackItem.image[1]["#text"];
-    // }
-
-    var listener = trackItem.listeners;
+    // TODO: STRING FORMAT NOT WORKING
+    var listener = trackItem.listeners.toLocaleString("en");
     var length = "n/A";
 
     var trackRow = "<div class=\"row result-container-row align-items-center\">"
@@ -66,7 +70,7 @@ function getTrackArray(response) {
   }
 
   return response;
-}
+};
 
 function getAlbumArtSource(imageArray) {
   if (imageArray === undefined) {
@@ -78,7 +82,7 @@ function getAlbumArtSource(imageArray) {
   }
 
   return "";
-}
+};
 
 /*
   Given a search term as a string, query the LastFM API.
