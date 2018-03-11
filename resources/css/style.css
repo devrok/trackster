@@ -71,10 +71,10 @@ tbody tr:hover {
 }
 
 
-.result-container-row .fa {
+td .fa {
   color: rgb(255, 0, 171);
 }
-.result-container-row .fa:hover {
+td .fa:hover {
   cursor: pointer;
   color: rgb(255, 102, 204);
 }
