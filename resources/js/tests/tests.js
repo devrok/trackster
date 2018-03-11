@@ -22,12 +22,10 @@ TracksterTests.testRenderTracks = function(errors) {
     name: 'Tiny Dancer',
     artist: 'Elton John',
     image: [
-      {},
-      {
-        '#text': 'https://lastfm-img2.akamaized.net/i/u/64s/e4b1e25d34694b5d89541185ef45cfa3.png'
-      },
-      {},
-      {}
+      {'#text': 'https://lastfm-img2.akamaized.net/i/u/64s/e4b1e25d34694b5d89541185ef45cfa3.png'},
+      {'#text': 'https://lastfm-img2.akamaized.net/i/u/64s/e4b1e25d34694b5d89541185ef45cfa3.png'},
+      {'#text': 'https://lastfm-img2.akamaized.net/i/u/64s/e4b1e25d34694b5d89541185ef45cfa3.png'},
+      {'#text': 'https://lastfm-img2.akamaized.net/i/u/64s/e4b1e25d34694b5d89541185ef45cfa3.png'}
     ],
     listeners: '581520'
   }];

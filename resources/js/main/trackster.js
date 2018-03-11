@@ -20,37 +20,65 @@ var Trackster = {};
   Given an array of track data, create the HTML for a Bootstrap row for each.
   Append each "row" to the container in the body to display all tracks.
 */
-Trackster.renderTracks = function(trackmatches) {
-  //console.log(tracks);
-  // var x = tracks.length;
-  // console.log(x);
-  // ab hier passt was nicht
-  // console.log(tracks.length);
-  var tracks = trackmatches.track;
+Trackster.renderTracks = function(tracks) {
 
-  for (var i = 0; i < tracks.length; i++) {
+  $("#result-container").empty();
+
+  var trackArray = getTrackArray(tracks);
+
+  for (var i = 0; i < trackArray.length; i++) {
+    var trackItem = trackArray[i];
 
     var number = i;
-    var trackName = tracks[i].name;
-    var artist = tracks[i].artist;
-    var albumArt =tracks[i].image[1]["#text"];
-    var listener =tracks[i].listeners;
+    var trackUrl = trackItem.url;
+    var trackName = trackItem.name;
+    var artist = trackItem.artist;
+    var albumArt = getAlbumArtSource(trackItem.image);
+    // if (trackItem.image !== null && trackItem.image.length > 1) {
+    //     albumArt = trackItem.image[1]["#text"];
+    // }
+
+    var listener = trackItem.listeners;
     var length = "n/A";
 
     var trackRow = "<div class=\"row result-container-row align-items-center\">"
-      +"<i class=\"col-md-auto offset-md-1 fa fa-play-circle-o fa-lg\"></i>"
-      +"<span class=\"col-md-auto\">" + number +"</span>"
-      +"<span class=\"col-md-3\">" + trackName +"</span>"
-      +"<span class=\"col-md-2\">" + artist + "</span>"
-      +"<img class=\"col-md-1\" src=\"" + albumArt +"\" />"
-      +"<span class=\"col-md-1\">" + listener +"</span>"
-      +"<span class=\"col-md-1\">" + length +"</span>"
-      +"</div>";
+    + "  <a class=\"col-md-auto offset-md-1\" href=\"" + trackUrl + "\">"
+    + "    <i class=\"col-md-auto offset-md-1 fa fa-play-circle-o fa-lg\"></i>"
+    + "  </a>"
+    + "  <span class=\"col-md-auto\">" + number +"</span>"
+    + "  <span class=\"col-md-3\">" + trackName +"</span>"
+    + "  <span class=\"col-md-2\">" + artist + "</span>"
+    + "  <img class=\"col-md-1\" src=\"" + albumArt +"\" />"
+    + "  <span class=\"col-md-1\">" + listener +"</span>"
+    + "  <span class=\"col-md-1\">" + length +"</span>"
+    + "</div>";
 
     $("#result-container").append(trackRow);
   }
 
 };
+
+function getTrackArray(response) {
+  if (response.results !== undefined
+    && response.results.trackmatches != undefined
+    && response.results.trackmatches.track != undefined) {
+      return response.results.trackmatches.track
+  }
+
+  return response;
+}
+
+function getAlbumArtSource(imageArray) {
+  if (imageArray === undefined) {
+    return "";
+  }
+
+  if (imageArray !== null && imageArray.length > 1) {
+      return imageArray[1]["#text"];
+  }
+
+  return "";
+}
 
 /*
   Given a search term as a string, query the LastFM API.
@@ -60,11 +88,8 @@ Trackster.searchTracksByTitle = function(title) {
   if(title.length <= 0) return null;
 
   $.ajax({
-    url: "http://ws.audioscrobbler.com/2.0/?method=track.search&track=" + title +"&api_key=" + API_KEY +"&format=json",
+    url: "https://ws.audioscrobbler.com/2.0/?method=track.search&track=" + title +"&api_key=" + API_KEY +"&format=json",
     datatype: "jsonp",
-    success: function(data) {
-      //console.log(data);
-      Trackster.renderTracks(data.results.trackmatches);
-    }
+    success: Trackster.renderTracks
   });
 };
