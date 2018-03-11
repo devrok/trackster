@@ -3,10 +3,7 @@ $(document).ready(function() {
   $("#search-btn").click(function() {
     getInputAndSearchTracksByTitle();
   });
-});
 
-// TODO: KEYPRESS NOT WORKING
-$(document).on( 'pageinit',function(event){
   $("#search-box").keydown(function(e) {
     if ((e.which || e.keyCode) == 13) {
       getInputAndSearchTracksByTitle();
@@ -42,7 +39,7 @@ Trackster.renderTracks = function(tracks) {
     var artist = trackItem.artist;
     var albumArt = getAlbumArtSource(trackItem.image);
     // TODO: STRING FORMAT NOT WORKING
-    var listener = trackItem.listeners.toLocaleString("en");
+    var listener = numeral(trackItem.listeners);
     var length = "n/A";
 
     var trackRow = "<div class=\"row result-container-row align-items-center\">"
@@ -53,7 +50,7 @@ Trackster.renderTracks = function(tracks) {
     + "  <span class=\"col-md-3\">" + trackName +"</span>"
     + "  <span class=\"col-md-2\">" + artist + "</span>"
     + "  <img class=\"col-md-1\" src=\"" + albumArt +"\" />"
-    + "  <span class=\"col-md-1\">" + listener +"</span>"
+    + "  <span class=\"col-md-1\">" + listener.format("0,0") +"</span>"
     + "  <span class=\"col-md-1\">" + length +"</span>"
     + "</div>";
 

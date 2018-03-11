@@ -51,10 +51,15 @@ header input::placeholder {
   background-color: rgb(104, 0, 255);
 }
 /* helper style to identify issues */
-/* #result-header span {
+#result-header span {
   background-color: lightseagreen;
   border-left: 1px solid black;
-} */
+}
+
+.result-container-row a,
+span {
+  border-left: 1px solid black;
+}
 
 .result-container-row {
   padding: 0.25rem 0;
