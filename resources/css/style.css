@@ -62,7 +62,8 @@ input:focus {
   background-color: rgb(104, 0, 255);
 }
 
-#header-no:hover {
+#header-no,
+th:hover {
   cursor: pointer;
 }
 

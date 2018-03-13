@@ -4,8 +4,12 @@ $(document).ready(function() {
     getInputAndSearchTracksByTitle();
   });
 
-  $("#header-no").click(function() {
-    sortByNumber();
+  $("th").click(function() {
+    var index = $(this).index();
+    console.log(index);
+    var sorted = sortedByIndex(index);
+    $("#result-rows").empty();
+    $("#result-rows").append(sorted);
   });
 
   $("#search-box").keydown(function(e) {
@@ -91,11 +95,19 @@ function createTrackRow(trackItem, i) {
   + "</tr>";
 };
 
-function sortByNumber(){
+function sortedByIndex(index){
   // keine Ahnung
-  var d = $("#result-rows").find("td#field-no");
-  // var allDataRows = $("#result-rows").data("result-rows");
-  // console.log(allDataRows.count);
+  // var d = $("#result-rows").find("td#field-no");
+  var trackRows = $("#result-rows").find("tr");
+
+  return trackRows.sort(function(a, b) {
+    //const col = 4; // 4 artist // 3 song title
+
+    var valueA = a.getElementsByTagName('td')[index].innerHTML;
+    var valueB = b.getElementsByTagName('td')[index].innerHTML;
+
+    return valueA.localeCompare(valueB);
+  });
 };
 
 /*
